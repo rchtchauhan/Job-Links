@@ -2,7 +2,6 @@ import requests
 from bs4 import  BeautifulSoup
 
 class Scrapper:
-
     def __init__(self,url):
         self.url = url
 
@@ -27,7 +26,7 @@ class Scrapper:
                     if aTag is not None:
                         link = aTag.get('href')
                         link = "https://jobs.ltts.com/" + link
-                        job_title  = aTag.text.strip()
+                        job_title = aTag.text.strip()
                         postedDate = ele.find('span',{'class':'jobDate visible-phone'})
                         if postedDate is not None:
                             postedDate_list.append(postedDate.text.strip())
@@ -42,6 +41,4 @@ class Scrapper:
 
 url = "https://jobs.ltts.com/go/AMERICA/4637210/"
 obj = Scrapper(url)
-
 data = obj.process_html()
-print(data)
